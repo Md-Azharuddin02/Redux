@@ -1,39 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import "../App";
+import { counterAction, privacyAction } from "../store/store";
+import { useDispatch } from "react-redux";
 
 function Control() {
   const [data, setData] = useState('');
-  const dispatch = useDispatch();
-  const counter = useSelector(state=> state.counter )
+  const dispatch= useDispatch()
+  
 
-  useEffect(() => {
-    const saveData = localStorage.getItem("counter");
-    if (saveData) {
-      dispatch({ type: "SAVED_DATA", payload: Number(saveData) });
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    localStorage.setItem("counter", counter);
-  }, [counter]);
-
-  const handlePrivacy = () => {
-    dispatch({ type: "PRIVACY_TOGGLE", });
-  };
   const handleIncrement = () => {
-    dispatch({ type: "INCREMENT" });
+    dispatch(counterAction.increment())
+ 
   };
   const handleDecrement = () => {
-    dispatch({ type: "DECREMENT" });
+    dispatch(counterAction.decrement())
   };
   const handleAddition = (data) => {
-    dispatch({ type: "ADDITION", payload: Number(data) });
+    dispatch(counterAction.addtion(Number(data)));
     setData('');
   };
   const handleSubtraction = () => {
-    dispatch({ type: "SUBTRACTION", payload: Number(data) });
+    dispatch(counterAction.subtraction(Number(data)));
     setData('');
+  };
+    
+  const handlePrivacy = () => {
+    dispatch(privacyAction.togglePrivacy())
   };
   
   return (

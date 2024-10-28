@@ -9,10 +9,10 @@ import Privacy from "./components/Privacy";
 
 function App() {
   const privacy= useSelector(state=> state.privacy)
-console.log(privacy);
+ 
   return (
     <>
-      <div className="px-4 py-5 my-5 text-center">
+       <div className="px-4 py-5 my-5 text-center">
         <Card>
           <Header />
           <div className="col-lg-6 mx-auto">
