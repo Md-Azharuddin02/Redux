@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../App";
-import { counterAction, privacyAction } from "../store/store";
+import { counterAction } from "../store/counter";
+import { privacyAction } from "../store/privacy";
 import { useDispatch } from "react-redux";
 
 function Control() {
